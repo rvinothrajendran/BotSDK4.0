@@ -1,0 +1,14 @@
+C:\Developement\BotSample\NewBotSample\NewBotSample\bin\Debug\netcoreapp2.1\NewBotSample.deps.json
+C:\Developement\BotSample\NewBotSample\NewBotSample\bin\Debug\netcoreapp2.1\NewBotSample.runtimeconfig.json
+C:\Developement\BotSample\NewBotSample\NewBotSample\bin\Debug\netcoreapp2.1\NewBotSample.runtimeconfig.dev.json
+C:\Developement\BotSample\NewBotSample\NewBotSample\bin\Debug\netcoreapp2.1\NewBotSample.dll
+C:\Developement\BotSample\NewBotSample\NewBotSample\bin\Debug\netcoreapp2.1\NewBotSample.pdb
+C:\Developement\BotSample\NewBotSample\NewBotSample\obj\Debug\netcoreapp2.1\NewBotSample.csproj.CoreCompileInputs.cache
+C:\Developement\BotSample\NewBotSample\NewBotSample\obj\Debug\netcoreapp2.1\NewBotSample.RazorAssemblyInfo.cache
+C:\Developement\BotSample\NewBotSample\NewBotSample\obj\Debug\netcoreapp2.1\NewBotSample.RazorAssemblyInfo.cs
+C:\Developement\BotSample\NewBotSample\NewBotSample\obj\Debug\netcoreapp2.1\NewBotSample.AssemblyInfoInputs.cache
+C:\Developement\BotSample\NewBotSample\NewBotSample\obj\Debug\netcoreapp2.1\NewBotSample.AssemblyInfo.cs
+C:\Developement\BotSample\NewBotSample\NewBotSample\obj\Debug\netcoreapp2.1\NewBotSample.RazorTargetAssemblyInfo.cache
+C:\Developement\BotSample\NewBotSample\NewBotSample\obj\Debug\netcoreapp2.1\NewBotSample.dll
+C:\Developement\BotSample\NewBotSample\NewBotSample\obj\Debug\netcoreapp2.1\NewBotSample.pdb
+C:\Developement\BotSample\NewBotSample\NewBotSample\obj\Debug\netcoreapp2.1\NewBotSample.csprojAssemblyReference.cache
