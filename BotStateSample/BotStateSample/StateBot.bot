@@ -1,0 +1,18 @@
+{
+    "name": "StateBot",
+    "description": "",
+    "services": [
+        {
+            "type": "endpoint",
+            "appId": "",
+            "appPassword": "",
+            "endpoint": "http://localhost:57114/api/messages",
+            "id": "231db480-cf76-11e8-8c3f-5dc72620f0ef",
+            "name": "StateBot"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0",
+    "overrides": null,
+    "path": "C:\\Users\\rvino_yv8u651\\source\\repos\\rvinothrajendran\\BotSDK4.0\\BotStateSample\\BotStateSample\\StateBot.bot"
+}
