@@ -4,53 +4,71 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder;
+using Microsoft.Bot.Schema;
 
 namespace BotStateSample
 {
     public class BotStateDemo : IBot
     {
-        private readonly StateHelper _stateHelper;
-
-        public BotStateDemo(StateHelper stateHelper)
+        private StateAccessor _StateAccssor;
+        public BotStateDemo(StateAccessor stateAccessor)
         {
-            _stateHelper = stateHelper;
+            _StateAccssor = stateAccessor;
         }
 
         public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = new CancellationToken())
         {
-            var currentState = await _stateHelper.CurrentState.GetAsync(turnContext, () => new StateInfo(), cancellationToken);
+            var currentState = await _StateAccssor.currentTracking.GetAsync(turnContext, () => new TrackingState());
 
-            var userdata = await _stateHelper.CurrentUserInfo.GetAsync(turnContext, () => new UserInfo(), cancellationToken);
+            var currentUser = await _StateAccssor.currentUser.GetAsync(turnContext, () => new UserInfo());
 
-            switch (currentState.CurrentMode)
+            switch (currentState.Order)
             {
-                case Mode.Name:
-                    await turnContext.SendActivityAsync("Hello What is your name", cancellationToken: cancellationToken);
-                    currentState.CurrentMode = Mode.Email;
-                    await _stateHelper.CurrentState.SetAsync(turnContext, currentState, cancellationToken);
-                    await _stateHelper.ConversationState.SaveChangesAsync(turnContext,cancellationToken: cancellationToken);
+                case QuestionOrder.Name:
+                    await turnContext.SendActivityAsync("Please enter the Name");
+
+                    currentState.Order = QuestionOrder.Email;
+                    await _StateAccssor.currentTracking.SetAsync(turnContext, currentState);
+                    await _StateAccssor.converstate.SaveChangesAsync(turnContext);
+
                     break;
-                case Mode.Email:
+                case QuestionOrder.Email:
 
-                    userdata.Name = turnContext.Activity.Text;
-                    await _stateHelper.CurrentUserInfo.SetAsync(turnContext, userdata, cancellationToken);
-                    await _stateHelper.UserState.SaveChangesAsync(turnContext, cancellationToken: cancellationToken);
+                    currentUser.Name = turnContext.Activity.Text;
+                    await _StateAccssor.currentUser.SetAsync(turnContext, currentUser);
+                    await _StateAccssor.userState.SaveChangesAsync(turnContext);
 
-                    var strInfo = "Hello " + userdata.Name + " , Please enter the email";
-                    await turnContext.SendActivityAsync(strInfo, cancellationToken: cancellationToken);
-                    currentState.CurrentMode = Mode.Completed;
-                    await _stateHelper.CurrentState.SetAsync(turnContext, currentState, cancellationToken);
-                    await _stateHelper.ConversationState.SaveChangesAsync(turnContext, cancellationToken: cancellationToken);
+                    await turnContext.SendActivityAsync("Please enter the EMail");
+                    currentState.Order = QuestionOrder.Mobile;
+                    await _StateAccssor.currentTracking.SetAsync(turnContext, currentState);
+                    await _StateAccssor.converstate.SaveChangesAsync(turnContext);
+
+
                     break;
-                case Mode.Completed:
+                case QuestionOrder.Mobile:
 
-                    userdata.Email = turnContext.Activity.Text;
-                    await _stateHelper.CurrentUserInfo.SetAsync(turnContext, userdata, cancellationToken);
-                    await _stateHelper.UserState.SaveChangesAsync(turnContext, cancellationToken: cancellationToken);
+                    currentUser.Email = turnContext.Activity.Text;
+                    await _StateAccssor.currentUser.SetAsync(turnContext, currentUser);
+                    await _StateAccssor.userState.SaveChangesAsync(turnContext);
 
-                    var User = "Your Name :" + userdata.Name + " , Email Id : " + userdata.Email;
-                    await turnContext.SendActivityAsync(User, cancellationToken: cancellationToken);
-                    await turnContext.SendActivityAsync("Process has completed", cancellationToken: cancellationToken);
+                    await turnContext.SendActivityAsync("Please enter the Mobile");
+                    currentState.Order = QuestionOrder.Completed;
+                    await _StateAccssor.currentTracking.SetAsync(turnContext, currentState);
+                    await _StateAccssor.converstate.SaveChangesAsync(turnContext);
+                    break;
+                case QuestionOrder.Completed:
+
+                    currentUser.Mobile = turnContext.Activity.Text;
+                    await _StateAccssor.currentUser.SetAsync(turnContext, currentUser);
+                    await _StateAccssor.userState.SaveChangesAsync(turnContext);
+
+                    var RequestUserInfo = await _StateAccssor.currentUser.GetAsync(turnContext, () => new UserInfo());
+
+                    var userData = $"User Name : {RequestUserInfo.Name} , Email : {RequestUserInfo.Email} , Mobile : {RequestUserInfo.Mobile}"; ;
+
+                    await turnContext.SendActivityAsync("Hey your task has done , Please check");
+                    await turnContext.SendActivityAsync(userData);
+
                     break;
             }
         }

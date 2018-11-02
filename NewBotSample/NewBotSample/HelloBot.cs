@@ -8,6 +8,13 @@ using Microsoft.Bot.Schema;
 
 namespace NewBotSample
 {
+    public enum TrackContext
+    {
+        None = 0,
+        Name,
+        Email,
+        Phone
+    }
     public class HelloBot : IBot
     {
         public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = new CancellationToken())

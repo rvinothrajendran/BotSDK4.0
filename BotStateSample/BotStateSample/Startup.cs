@@ -36,13 +36,10 @@ namespace BotStateSample
                 serviceBot.CredentialProvider = new ConfigurationCredentialProvider(config);
             });
 
-            services.AddSingleton<StateHelper>(st =>
+            services.AddSingleton<StateAccessor>(obj =>
             {
-                var stateHelp = new StateHelper();
-                return stateHelp;
-
+                return new StateAccessor();
             });
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

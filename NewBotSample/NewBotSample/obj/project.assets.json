@@ -11678,11 +11678,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Developement\\BotSample\\NewBotSample\\NewBotSample\\NewBotSample.csproj",
+      "projectUniqueName": "C:\\Users\\rvino_yv8u651\\source\\repos\\rvinothrajendran\\BotSDK4.0\\NewBotSample\\NewBotSample\\NewBotSample.csproj",
       "projectName": "NewBotSample",
-      "projectPath": "C:\\Developement\\BotSample\\NewBotSample\\NewBotSample\\NewBotSample.csproj",
+      "projectPath": "C:\\Users\\rvino_yv8u651\\source\\repos\\rvinothrajendran\\BotSDK4.0\\NewBotSample\\NewBotSample\\NewBotSample.csproj",
       "packagesPath": "C:\\Users\\rvino_yv8u651\\.nuget\\packages\\",
-      "outputPath": "C:\\Developement\\BotSample\\NewBotSample\\NewBotSample\\obj\\",
+      "outputPath": "C:\\Users\\rvino_yv8u651\\source\\repos\\rvinothrajendran\\BotSDK4.0\\NewBotSample\\NewBotSample\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
