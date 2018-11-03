@@ -14,7 +14,7 @@ namespace Middleware
         {
             if (turnContext.Activity.Type is ActivityTypes.Message)
             {
-                await turnContext.SendActivityAsync("Hello Welcome to Bot new 4.0 Sample", cancellationToken: cancellationToken);
+                await turnContext.SendActivityAsync("Hello Welcome to Bot new 4.0 Middleware sample", cancellationToken: cancellationToken);
             }
         }
     }

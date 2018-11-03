@@ -33,8 +33,6 @@ namespace Middleware
 
             services.AddBot<HelloBot>(serviceBot =>
             {
-                serviceBot.CredentialProvider = new ConfigurationCredentialProvider(config);
-
                 serviceBot.Middleware.Add(new MiddlewareErrorHandler());
                 serviceBot.Middleware.Add(new MiddlewareLogger());
             });
