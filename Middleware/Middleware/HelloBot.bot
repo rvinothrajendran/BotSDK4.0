@@ -1,0 +1,18 @@
+{
+    "name": "Middleware",
+    "description": "",
+    "services": [
+        {
+            "type": "endpoint",
+            "appId": "",
+            "appPassword": "",
+            "endpoint": "http://localhost:50939/api/messages",
+            "id": "0b637860-ceb9-11e8-8410-8974c602caab",
+            "name": "http://localhost:50939/api/messages"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0",
+    "overrides": null,
+    "path": "C:\\Users\\rvino_yv8u651\\source\\repos\\rvinothrajendran\\BotSDK4.0\\Middleware\\Middleware\\HelloBot.bot"
+}

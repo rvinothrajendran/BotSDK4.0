@@ -10,7 +10,7 @@ using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Middleware
+namespace BotStateSample
 {
     public class Startup
     {
@@ -31,12 +31,15 @@ namespace Middleware
             var config = buildConfig.Build();
             services.AddSingleton(config);
 
-            services.AddBot<HelloBot>(serviceBot =>
+            services.AddBot<BotStateDemo>(serviceBot =>
             {
-                serviceBot.Middleware.Add(new MiddlewareErrorHandler());
-                serviceBot.Middleware.Add(new MiddlewareLogger());
+                serviceBot.CredentialProvider = new ConfigurationCredentialProvider(config);
             });
 
+            services.AddSingleton<StateAccessor>(obj =>
+            {
+                return new StateAccessor();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
