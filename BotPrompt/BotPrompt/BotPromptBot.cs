@@ -41,9 +41,9 @@ namespace BotPrompt
         {
             _stateAccessor = stateAccessor;
             _dialogSet = new DialogSet(stateAccessor.DlgState);
-            _dialogSet.Add(new TextPrompt(DlgNameId));
-            _dialogSet.Add(new NumberPrompt<int>(DlgMobileId));
-            _dialogSet.Add(new ChoicePrompt(DlgLanguageId));
+            _dialogSet.Add(new TextPrompt(DlgNameId,UserNameValidation));
+            _dialogSet.Add(new NumberPrompt<int>(DlgMobileId,MobileNumberValidation));
+            _dialogSet.Add(new ChoicePrompt(DlgLanguageId,ChoiceValidataion));
             _dialogSet.Add(new DateTimePrompt(DlgDateTimeId));
 
             var waterfallSteps = new WaterfallStep[]
@@ -59,6 +59,37 @@ namespace BotPrompt
             
             
 
+        }
+
+        private Task<bool> ChoiceValidataion(PromptValidatorContext<FoundChoice> promptContext, CancellationToken cancellationToken)
+        {
+            return Task.FromResult(true);
+        }
+
+        private Task<bool> UserNameValidation(PromptValidatorContext<string> promptContext, CancellationToken cancellationToken)
+        {
+            return Task.FromResult(true);
+        }
+
+        private async Task<bool> MobileNumberValidation(PromptValidatorContext<int> promptcontext, CancellationToken cancellationtoken)
+        {
+            if (!promptcontext.Recognized.Succeeded)
+            {
+                await promptcontext.Context.SendActivityAsync("Hello, Please enter the valid mobile no",
+                    cancellationToken: cancellationtoken);
+
+                return false;
+            }
+
+            int count = Convert.ToString(promptcontext.Recognized.Value).Length;
+            if (count != 10)
+            {
+                await promptcontext.Context.SendActivityAsync("Hello , you are missing some number !!!",
+                    cancellationToken: cancellationtoken);
+                return false;
+            }
+
+            return true;
         }
 
         private async Task<DialogTurnResult> GetUserNameAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
