@@ -32,15 +32,19 @@ namespace BotPrompt
         private readonly StateAccessor _stateAccessor;
 
         private readonly string DlgMainId = "MainDialog";
-       
+        private readonly string DlgNameId = "NameDlg";
+        private readonly string DlgMobileId = "MobileDlg";
+        private readonly string DlgLanguageId = "LanguageListDlg";
+        private readonly string DlgDateTimeId = "DateTimeDlg";
+
         public BotPromptBot(StateAccessor stateAccessor)
         {
             _stateAccessor = stateAccessor;
             _dialogSet = new DialogSet(stateAccessor.DlgState);
-            _dialogSet.Add(new TextPrompt("NameDlg"));
-            _dialogSet.Add(new NumberPrompt<int>("MobileDlg"));
-            _dialogSet.Add(new ChoicePrompt("LanguageList"));
-            _dialogSet.Add(new DateTimePrompt("DateTimeDlg"));
+            _dialogSet.Add(new TextPrompt(DlgNameId));
+            _dialogSet.Add(new NumberPrompt<int>(DlgMobileId));
+            _dialogSet.Add(new ChoicePrompt(DlgLanguageId));
+            _dialogSet.Add(new DateTimePrompt(DlgDateTimeId));
 
             var waterfallSteps = new WaterfallStep[]
             {
@@ -61,7 +65,7 @@ namespace BotPrompt
         {
             var name = (string)stepcontext.Result;
 
-            return await stepcontext.PromptAsync("MobileDlg", new PromptOptions()
+            return await stepcontext.PromptAsync(DlgMobileId, new PromptOptions()
             {
                 Prompt = MessageFactory.Text("Please enter the mobile No"),
                 RetryPrompt = MessageFactory.Text("Enter Valid mobile No")
@@ -70,7 +74,7 @@ namespace BotPrompt
 
         private async Task<DialogTurnResult> UserNameAsync(WaterfallStepContext stepcontext, CancellationToken cancellationtoken)
         {
-            return await stepcontext.PromptAsync("NameDlg", new PromptOptions
+            return await stepcontext.PromptAsync(DlgNameId, new PromptOptions
             {
                 Prompt = MessageFactory.Text("Hello !!!, Please enter the Name")
                 
@@ -84,7 +88,7 @@ namespace BotPrompt
 
             var newMovieList = new List<string> {" Tamil ", " English ", " kaanda "};
             
-            return await stepContext.PromptAsync("LanguageList", new PromptOptions()
+            return await stepContext.PromptAsync(DlgLanguageId, new PromptOptions()
             {
                 Prompt = MessageFactory.Text("Please select the Language"),
                 Choices = ChoiceFactory.ToChoices(newMovieList),
@@ -97,7 +101,7 @@ namespace BotPrompt
         {
             var choice = (FoundChoice) stepContext.Result;
 
-            return await stepContext.PromptAsync("DateTimeDlg", new PromptOptions()
+            return await stepContext.PromptAsync(DlgDateTimeId, new PromptOptions()
             {
                 Prompt = MessageFactory.Text("Please select the Date")
             },cancellationToken);
