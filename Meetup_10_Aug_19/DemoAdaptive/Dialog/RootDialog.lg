@@ -1,0 +1,29 @@
+﻿> Language Generation definition file. 
+> See https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/language-generation to learn more
+
+# Welcome
+- Hello Welcome to Adaptive Dialog Sample
+
+# AskForName
+- Please enter your name.
+
+# AckName
+- Thanks, {user.userProfile.Name}.
+
+# DestinationPrompt
+- What is your destination city?
+
+# ConfirmPrompt
+- All the information are correct?
+
+# ConfirmInfo
+- Thanks, {user.userProfile.Name} ,Travelling City : {user.userProfile.destination}
+
+# NotConfirm
+- Thanks for visiting !!! See you later.
+
+# WeatherCity
+- Please enter the City
+
+# WeatherRange
+- 22 c
