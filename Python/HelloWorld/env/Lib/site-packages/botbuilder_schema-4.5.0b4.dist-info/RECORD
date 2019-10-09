@@ -1,0 +1,13 @@
+botbuilder/schema/__init__.py,sha256=DjvfR9CmMtbWYaa4mGEYwwei8g7iO7MPKU1yxEM6NU4,7690
+botbuilder/schema/__pycache__/__init__.cpython-37.pyc,,
+botbuilder/schema/__pycache__/_connector_client_enums.cpython-37.pyc,,
+botbuilder/schema/__pycache__/_models.cpython-37.pyc,,
+botbuilder/schema/__pycache__/_models_py3.cpython-37.pyc,,
+botbuilder/schema/_connector_client_enums.py,sha256=9UcrvgNR1fk5m5t0F2Gw00ReRfq68w5bJyVqjZLdrXU,2635
+botbuilder/schema/_models.py,sha256=1IzwxERLmEudvk2QALXP1MaQCDG6HrieT_kRIKXJZFo,81440
+botbuilder/schema/_models_py3.py,sha256=RyPeMWU5QMk-QT9xEChLkUYufpBqMZVhC6DzZhoHuOk,84965
+botbuilder_schema-4.5.0b4.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+botbuilder_schema-4.5.0b4.dist-info/METADATA,sha256=_lSVEpKUo43gWqw9m0wA4N1rU0C-lXcN1kbajVeK2KA,3668
+botbuilder_schema-4.5.0b4.dist-info/RECORD,,
+botbuilder_schema-4.5.0b4.dist-info/WHEEL,sha256=h_aVn5OB2IERUjMbi2pucmR_zzWJtk303YXvhh60NJ8,110
+botbuilder_schema-4.5.0b4.dist-info/top_level.txt,sha256=2p3tapzF5j-vDQrnQjnuJZvvXStR_qu8i9Tqq-0ThZg,11
